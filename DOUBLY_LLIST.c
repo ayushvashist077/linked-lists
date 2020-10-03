@@ -61,6 +61,30 @@ void lastt()
         last->prev=ptr;
     }
 }
+void pos()
+{
+    int p;
+    struct node *pre;
+    ptr=first;
+    printf("Enter position: ");
+    scanf("%d",&p);
+    int c;
+    for(c=1;c<p;c++)
+    {
+        pre=ptr;
+        ptr=ptr->next;
+    }
+    int v;
+    printf("\nEnter value: ");
+    scanf("%d", &v);
+    newnd=create(v);
+    pre->next=newnd;
+    newnd->prev=pre;
+    newnd->next=ptr;
+    ptr->prev=newnd;
+}
+
+
 
 
 
@@ -118,7 +142,7 @@ int main()
     int ch;
     while(1)
     {
-        printf("\n\n1->INSERT FROM FRONT\n2-> INSERT FROM END\n3-> DELETE FORM POS\n4-> DISPLAY\n5-> EXIT\n\nEnter: ");
+        printf("\n\n1->INSERT FROM FRONT\n2-> INSERT FROM END\n3->INSERT AT POSITION\n4-> DELETE FORM POS\n5-> DISPLAY\n6-> EXIT\n\nEnter: ");
         scanf("%d",&ch);
         system("cls");
         if(ch==1)
@@ -126,8 +150,10 @@ int main()
         else if(ch==2)
          lastt();
         else if(ch==3)
-         del();
+            pos();
         else if(ch==4)
+         del();
+        else if(ch==5)
          display();
         else
          exit(0);
