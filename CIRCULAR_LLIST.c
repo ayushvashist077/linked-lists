@@ -75,6 +75,28 @@ void pos()
     newnd->next=ptr;
     }
 }
+void lastt()
+{
+    int v;
+    printf("\nEnter value: ");
+    scanf("%d", &v);
+    newnd=create(v);
+    last=first;
+    if(first==NULL && last==NULL)
+    {
+        first=last=newnd;
+        first->next=NULL;
+        last->next=first;
+    }
+     else
+    {
+        while(last->next != first)
+         last=last->next;
+        last->next=newnd;
+        last=newnd;
+        last->next=first;  
+    }
+}
 
 void del()
 {
@@ -126,7 +148,7 @@ int main()
     int ch;
     while(1)
     {
-        printf("\n\n1->INSERT FROM FRONT\n2->INSERT AT POS\n3-> DELETE FORM POS\n4-> DISPLAY\n5-> EXIT\n\nEnter: ");
+        printf("\n\n1->INSERT FROM FRONT\n2->INSERT AT POS\n3->INSERT FROM LAST\n4-> DELETE FORM POS\n5-> DISPLAY\n6-> EXIT\n\nEnter: ");
         scanf("%d",&ch);
         system("cls");
         if(ch==1)
@@ -134,8 +156,10 @@ int main()
         else if(ch==2)
          pos();
         else if(ch==3)
-         del();
+         lastt();
         else if(ch==4)
+         del();
+        else if(ch==5)
          display();
         else
          exit(0);
