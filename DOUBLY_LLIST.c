@@ -120,6 +120,27 @@ void del()
     free(ptr);
     }
 }
+void reverse()
+{
+    struct node *current, *temp;
+
+    current = first;
+    while(current != NULL)
+    {
+
+        temp = current->next;
+        current->next = current->prev;
+        current->prev = temp;
+
+        current = temp;
+    }
+
+    temp = first;
+    first = last;
+    last = temp;
+
+    printf("LIST REVERSED SUCCESSFULLY.\n");
+}
 
 
 
@@ -142,7 +163,7 @@ int main()
     int ch;
     while(1)
     {
-        printf("\n\n1->INSERT FROM FRONT\n2-> INSERT FROM END\n3->INSERT AT POSITION\n4-> DELETE FORM POS\n5-> DISPLAY\n6-> EXIT\n\nEnter: ");
+        printf("\n\n1->INSERT FROM FRONT\n2-> INSERT FROM END\n3->INSERT AT POSITION\n4-> DELETE FORM POS\n5->REVERSE LINKED LIST\n6-> DISPLAY\n7-> EXIT\n\nEnter: ");
         scanf("%d",&ch);
         system("cls");
         if(ch==1)
@@ -154,6 +175,8 @@ int main()
         else if(ch==4)
          del();
         else if(ch==5)
+            reverse();
+        else if(ch==6)
          display();
         else
          exit(0);
